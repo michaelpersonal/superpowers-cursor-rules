@@ -76,6 +76,42 @@ Format for sharing (display directly, copy-paste ready):
 
 After generating, commit the project doc to git.
 
+### Step 5: Update Portfolio Website
+
+If this is a shareable/demo-able project, add it to the portfolio:
+
+1. **Copy project files** to `../mywebsite/<project-name>/`
+   ```bash
+   mkdir -p ../mywebsite/<project-name>
+   cp index.html ../mywebsite/<project-name>/
+   # Copy any other required assets
+   ```
+
+2. **Update portfolio.html** in `../mywebsite/`:
+   - Add new project entry at the TOP of the projects-list
+   - Format:
+   ```html
+   <div class="project-item">
+       <p class="project-name">→ <a href="https://michaelguo.vercel.app/<project-name>" class="link" target="_blank">🎯 Project Name</a></p>
+       <p class="project-desc">One-line description of what it does</p>
+       <p class="project-tech">Tech / Stack / Used</p>
+   </div>
+   ```
+
+3. **Commit changes** to the mywebsite repo:
+   ```bash
+   cd ../mywebsite
+   git add .
+   git commit -m "feat: add <project-name> to portfolio"
+   ```
+
+4. **Deploy** (if using Vercel, push triggers auto-deploy)
+
+**Skip this step if:**
+- Project is not demo-able (CLI tool, library, etc.)
+- Project contains sensitive/private code
+- User explicitly says not to publish
+
 ## Writing Style
 
 **CRITICAL: Use first person throughout**
