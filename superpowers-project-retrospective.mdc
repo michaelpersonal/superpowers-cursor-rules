@@ -1,0 +1,103 @@
+---
+description: Use at the end of any project to generate a "How I Built This" retrospective guide - creates both project documentation and a shareable version for teaching others
+globs:
+alwaysApply: false
+---
+
+# Project Retrospective
+
+## Overview
+
+Generate a "How I Built This" guide at the end of a project. Reviews the collaboration history and extracts key prompts, decisions, and iterations into two outputs:
+
+1. **Project doc** (`docs/how-i-built-this.md`) - Lives with the code
+2. **Shareable guide** - Formatted for social sharing/teaching
+
+**Announce at start:** "I'm using the project-retrospective skill to document how we built this."
+
+## The Process
+
+### Step 1: Gather Context
+
+1. Review conversation history for:
+   - Initial inspiration/request
+   - Brainstorming questions and answers
+   - Key decision points
+   - Iteration feedback
+   - Feature additions
+   - Problems and solutions
+
+2. Check project files:
+   - README for project description
+   - Design docs in `docs/plans/`
+   - Git history for milestones
+
+### Step 2: Extract the Story
+
+Identify these elements:
+
+| Element | What to Find |
+|---------|--------------|
+| **Inspiration** | How the project started (link, idea, problem) |
+| **Tech choices** | Stack decisions and why |
+| **Key prompts** | Exact user messages that drove progress |
+| **Iterations** | Feedback loops and improvements |
+| **Pivots** | When direction changed and why |
+| **Wins** | What worked well |
+| **Challenges** | Problems encountered and solutions |
+
+### Step 3: Generate Both Outputs
+
+**Output 1: Project Documentation**
+
+Save to `docs/how-i-built-this.md` with this structure:
+
+- How I Built [Project Name]
+- The Idea: How the project started
+- Tech Stack Decisions: What I chose and why
+- The Build Process: Phases with key prompts
+- Iterations & Improvements: Feedback and changes
+- Challenges & Solutions: Problems and fixes
+- Key Prompts That Worked: Table of effective prompts
+- Lessons Learned: What worked, what I'd change
+
+**Output 2: Shareable Guide**
+
+Format for sharing (display directly, copy-paste ready):
+
+- Compelling hook about what I built
+- My approach and methodology
+- The prompts that worked (table format)
+- Key lessons (numbered list)
+- Quick start template for others
+- Project link and tech stack
+
+### Step 4: Commit Documentation
+
+After generating, commit the project doc to git.
+
+## Writing Style
+
+**CRITICAL: Use first person throughout**
+- CORRECT: "I started by..." / "We built..." / "My approach was..."
+- WRONG: "You should..." / "The user did..." / "Your project..."
+
+**Tone:**
+- Conversational and authentic
+- Celebrate wins without bragging
+- Honest about challenges
+- Practical and actionable for readers
+
+**For the shareable version:**
+- More casual, social-media friendly
+- Include emojis sparingly
+- Focus on "here's how others can do this too"
+- End with encouragement
+
+## Key Principles
+
+- **Extract real prompts** - Use exact quotes when possible
+- **Show the iteration** - The messy middle is valuable
+- **Be honest about failures** - What didn't work teaches too
+- **Make it reproducible** - Others should be able to follow
+- **First person always** - This is the builder's story
