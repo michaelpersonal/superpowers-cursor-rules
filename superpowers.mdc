@@ -12,6 +12,7 @@ alwaysApply: true
 
 **Invoke skills by context:**
 - Starting a new feature → Use **Brainstorming** first
+- Creating visual designs → Use **Design Mockup** with Pencil
 - Writing code → Use **Test-Driven Development**
 - Debugging → Use **Systematic Debugging**
 - Complex task → Use **Writing Plans** then **Executing Plans**
