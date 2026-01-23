@@ -1,0 +1,431 @@
+---
+description: Use when creating visual design mockups in Pencil, before implementing interfaces - creates comprehensive design specs and systematic Pencil implementations with visual verification
+globs: 
+alwaysApply: false
+---
+
+# Design Mockup
+
+## Overview
+
+Create visual design mockups systematically in Pencil. Start with brainstorming to validate design decisions, fetch appropriate style guides, document the complete specification, then implement incrementally with visual verification.
+
+**Core principle:** Document first, implement systematically, verify visually.
+
+**Announce at start:** "I'm using the design-mockup skill to create this visual design."
+
+## When to Use
+
+Use for ANY visual design work in Pencil:
+- Interface mockups (web apps, mobile apps, dashboards)
+- Landing pages and marketing sites
+- Email templates
+- Component libraries
+- Design systems
+
+**Use this ESPECIALLY when:**
+- Creating new interfaces from scratch
+- Building design mockups before coding
+- Need visual exploration before implementation
+- Working with design tools (Pencil)
+
+**Don't skip when:**
+- "Just a quick mockup" (systematic is faster than rework)
+- Already have rough ideas (validate them first)
+- Working with existing designs (document changes systematically)
+
+## The Five Phases
+
+You MUST complete each phase before proceeding to the next.
+
+### Phase 1: Design Validation (Use Brainstorming Skill)
+
+**REQUIRED SUB-SKILL:** Use superpowers:brainstorming
+
+**BEFORE creating ANY visual elements:**
+
+1. **Understand the design intent**
+   - What problem does this interface solve?
+   - Who are the users?
+   - What are the key user actions?
+   - What should users feel when using it?
+
+2. **Ask questions one at a time**
+   - Scope: What features/sections are needed?
+   - Layout: What layout structure makes sense?
+   - Functionality: Interactive prototype or static mockup?
+   - Style: Use existing components or fetch style guide?
+   - Platform: Desktop, mobile, responsive?
+
+3. **Validate incrementally**
+   - Get confirmation after each major decision
+   - Don't proceed without clarity
+   - If user is unclear, propose 2-3 options with your recommendation
+
+4. **Decide on style approach**
+   - **Option A:** Use existing design system/components (if available)
+   - **Option B:** Fetch a style guide (for fresh direction)
+   - **Option C:** Create custom minimal style
+   
+   If fetching style guide:
+   ```javascript
+   // First get available tags
+   get_style_guide_tags()
+   
+   // Then fetch with relevant tags (5-10 tags)
+   get_style_guide(tags: ["webapp", "clean", "professional", ...])
+   ```
+
+### Phase 2: Design Documentation
+
+**Create comprehensive design specification BEFORE implementing.**
+
+**Save to:** `docs/plans/YYYY-MM-DD-<design-name>-design.md`
+
+**Document MUST include:**
+
+```markdown
+# [Design Name] Design Specification
+
+**Date:** [Date]
+**Type:** Visual Design Mockup (Pencil)
+**Style Guide:** [Style guide name or "Custom"]
+
+## Overview
+- Purpose and goals
+- Target users/audience
+- Key features/sections
+
+## Design Foundation
+
+### Colors
+- Primary: `#HEX` - usage
+- Secondary: `#HEX` - usage
+- Text: `#HEX` - usage
+- Backgrounds: `#HEX` - usage
+- Borders: `#HEX` - usage
+- All semantic colors
+
+### Typography
+- Heading font: [Font name], weights, sizes
+- Body font: [Font name], weights, sizes
+- Line heights, letter spacing
+
+### Spacing System
+- [8px, 12px, 16px, 20px, 24px, 32px, 40px, 48px...]
+- Padding patterns
+- Gap patterns
+
+### Design Principles
+- Corner radius (or zero radius)
+- Border thickness
+- Shadow usage
+- Layout patterns
+
+## Layout Structure
+
+### Canvas
+- Total width: [px]
+- Total height: [px] (scrollable if needed)
+- Background: [color]
+
+### Layout Grid/Columns
+[ASCII diagram showing layout structure]
+
+## Component Specifications
+
+### [Component 1 Name]
+
+**Container:**
+- Width: [value]
+- Height: [value]
+- Padding: [values]
+- Layout: [vertical/horizontal]
+- Gap: [value]
+
+**Elements:**
+- Element 1: [exact specifications]
+- Element 2: [exact specifications]
+
+[Continue for all components]
+
+## Interaction States
+- Hover states
+- Active states
+- Focus states
+- Disabled states
+
+## Success Criteria
+- [What defines a successful design]
+```
+
+**Commit the design document:**
+```bash
+git add docs/plans/YYYY-MM-DD-design.md
+git commit -m "docs: add [design name] specification"
+```
+
+### Phase 3: Implementation Planning
+
+**Before writing any Pencil operations:**
+
+1. **Break down into sections**
+   - Main layout structure
+   - Navigation/sidebar
+   - Content areas
+   - Interactive elements
+   - Details and refinements
+
+2. **Plan batch sizes**
+   - Aim for 20-25 operations per batch
+   - Group related elements together
+   - Structure before details
+
+3. **Identify reusable patterns**
+   - Could this be a component?
+   - Will this pattern repeat?
+   - Should I create it once and copy?
+
+4. **Plan verification points**
+   - After each major section → take screenshot
+   - Verify measurements, colors, spacing
+   - Check against design spec
+
+### Phase 4: Systematic Implementation
+
+**Implement in batches following the hierarchy:**
+
+**Batch 1: Main Structure**
+```javascript
+// Delete default frame
+D("defaultFrameId")
+
+// Create main canvas
+screen=I(document, {type: "frame", name: "[Design Name]", 
+         width: [px], height: [px], fill: "[color]", 
+         layout: "horizontal/vertical"})
+
+// Create major sections
+section1=I(screen, {type: "frame", name: "[Section 1]", 
+           width: [value], height: "fill_container", ...})
+section2=I(screen, {type: "frame", name: "[Section 2]", ...})
+```
+
+**Take screenshot and verify structure:**
+```javascript
+get_screenshot(filePath: "file.pen", nodeId: "screenId")
+```
+**Verify:** Layout structure matches spec, proportions correct
+
+**Batch 2-N: Build each section systematically**
+
+For each section:
+1. Create container with correct sizing/layout
+2. Add major elements (headers, buttons, etc.)
+3. Add content (text, icons, images)
+4. Apply exact styling (colors, fonts, spacing)
+5. **Take screenshot after each major section**
+6. Verify against design spec
+
+**Implementation patterns:**
+
+**Text elements:**
+```javascript
+heading=I(parent, {type: "text", content: "[text]", 
+          fontSize: [size], fontFamily: "[font]", 
+          fontWeight: "[weight]", fill: "[color]"})
+```
+
+**Buttons/Interactive elements:**
+```javascript
+button=I(parent, {type: "frame", name: "[Button]", 
+         padding: [vertical, horizontal], fill: "[color]", 
+         strokeColor: "[color]", strokeThickness: [px], 
+         cornerRadius: [px], layout: "horizontal", 
+         justify: "center", align: "center", gap: [px]})
+icon=I(button, {type: "icon_font", icon: "lucide:[name]", 
+       width: [px], height: [px], fill: "[color]"})
+text=I(button, {type: "text", content: "[text]", 
+       fontSize: [px], fontFamily: "[font]", 
+       fontWeight: "[weight]", fill: "[color]"})
+```
+
+**List items/repeated elements:**
+```javascript
+// Create first item completely
+item1=I(container, {type: "frame", ...})
+// Add all child elements
+// Then create item2, item3, etc. with variations
+```
+
+**Borders:**
+```javascript
+// Full border
+{strokeColor: "[color]", strokeThickness: [px]}
+
+// Specific sides
+{strokeColor: "[color]", strokeSides: ["top", "bottom"], 
+ strokeThickness: [px]}
+```
+
+### Phase 5: Visual Verification
+
+**After implementation completes:**
+
+1. **Take final screenshot**
+   ```javascript
+   get_screenshot(filePath: "file.pen", nodeId: "mainScreenId")
+   ```
+
+2. **Verify against spec (checklist):**
+   - [ ] All sections present
+   - [ ] Correct measurements (widths, heights, spacing)
+   - [ ] Colors match specification
+   - [ ] Typography matches (fonts, sizes, weights)
+   - [ ] Spacing is consistent (gaps, padding)
+   - [ ] Borders/strokes correct
+   - [ ] Layout structure correct
+   - [ ] No visual glitches or misalignment
+   - [ ] Text is readable and properly sized
+   - [ ] Icons are correct size and color
+
+3. **Check for common issues:**
+   - Text overflow or truncation
+   - Misaligned elements
+   - Wrong colors (check hex codes)
+   - Inconsistent spacing
+   - Missing elements from spec
+   - Elements overlapping incorrectly
+
+4. **Document any deviations**
+   - If implementation differs from spec, note why
+   - Update spec if design improved during implementation
+
+## Red Flags - STOP and Follow Process
+
+If you catch yourself thinking:
+- "Quick mockup without spec"
+- "Just start designing, figure it out as I go"
+- "Skip the screenshot checks"
+- "Don't need to verify colors/spacing"
+- "This is too simple for the full process"
+- "Already have ideas, don't need brainstorming"
+
+**ALL of these mean: STOP. Return to Phase 1.**
+
+## Common Mistakes
+
+| Mistake | Reality |
+|---------|---------|
+| "Skip design spec, faster to just build" | Spec prevents rework. Building without spec = guessing. |
+| "Don't need style guide for simple design" | Style guide provides consistency and saves decisions. |
+| "Take screenshot only at end" | Incremental screenshots catch issues early. |
+| "Batch size doesn't matter" | Too large = hard to debug. Too small = inefficient. |
+| "Don't need to verify measurements" | Pixel-perfect matters. "Looks close" ≠ matches spec. |
+| "Can skip brainstorming, I know what to build" | Assumptions create rework. Validate first. |
+
+## Integration with Other Skills
+
+**This skill combines with:**
+
+1. **superpowers:brainstorming** (Phase 1)
+   - Validate design decisions
+   - Explore approaches
+   - Document choices
+
+2. **superpowers:verification-before-completion** (Phase 5)
+   - Take screenshots = verification
+   - Check against spec = verification
+   - No claiming "done" without visual proof
+
+3. **superpowers:writing-plans** (if continuing to code)
+   - After design mockup complete
+   - Use mockup as reference for implementation plan
+   - Design spec becomes requirements for code
+
+## Quick Reference Checklist
+
+Before starting:
+- [ ] Used brainstorming skill to validate decisions
+- [ ] Fetched or chose style guide
+- [ ] Created design specification document
+- [ ] Committed design doc to git
+
+During implementation:
+- [ ] Building in batches of ~20-25 operations
+- [ ] Following design spec measurements exactly
+- [ ] Taking screenshots after each major section
+- [ ] Verifying colors, fonts, spacing as I build
+
+After completion:
+- [ ] Took final screenshot
+- [ ] Verified all elements present
+- [ ] Checked measurements match spec
+- [ ] Verified colors/typography correct
+- [ ] No visual glitches or misalignment
+- [ ] Design achieves stated goals
+
+## Example: Simple Button Component
+
+**Phase 1: Validation**
+- Purpose: Primary action button
+- Style: Use fetched style guide
+- States needed: Default, hover (if interactive prototype)
+
+**Phase 2: Documentation**
+```markdown
+### Primary Button
+- Width: fit_content (or fixed px)
+- Height: fit_content
+- Padding: [10, 20]
+- Background: #E42313 (primary color)
+- Border: none
+- Corner radius: 0px (sharp)
+- Layout: horizontal, center aligned
+- Gap: 8px (between icon and text)
+
+Elements:
+- Icon: 14×14 lucide icon, #FFFFFF
+- Text: 13px Space Grotesk medium, #FFFFFF
+```
+
+**Phase 3: Planning**
+- Single batch (small component)
+- Create frame → add icon → add text
+- Screenshot to verify
+
+**Phase 4: Implementation**
+```javascript
+btn=I(parent, {type: "frame", name: "Primary Button", 
+      padding: [10, 20], fill: "#E42313", 
+      cornerRadius: 0, layout: "horizontal", 
+      justify: "center", align: "center", gap: 8})
+btnIcon=I(btn, {type: "icon_font", icon: "lucide:check", 
+         width: 14, height: 14, fill: "#FFFFFF"})
+btnTxt=I(btn, {type: "text", content: "Submit", 
+        fontSize: 13, fontFamily: "Space Grotesk", 
+        fontWeight: "medium", fill: "#FFFFFF"})
+```
+
+**Phase 5: Verification**
+```javascript
+get_screenshot(filePath: "file.pen", nodeId: "btnId")
+```
+Check: Color #E42313, text white, 14px icon, correct padding
+
+## Real-World Impact
+
+From the Gmail interface design:
+- **With systematic approach:** Complete design in one session, clear documentation, verifiable result
+- **Without process:** Multiple reworks, inconsistent styling, missing specifications
+- **Documentation saved us:** Session loss didn't matter, rebuilt from spec
+- **Incremental screenshots:** Would have caught issues earlier (we only did final)
+
+## Final Rule
+
+```
+Design mockup → brainstorm + spec + systematic implementation + visual verification
+Otherwise → not design-mockup skill
+```
+
+No exceptions without your human partner's permission.
