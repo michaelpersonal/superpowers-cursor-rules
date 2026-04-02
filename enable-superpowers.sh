@@ -22,6 +22,14 @@ NC='\033[0m'
 RULES_SOURCE="$HOME/.cursor-rules"
 TARGET_DIR=".cursor/rules"
 
+if [ ! -d "$RULES_SOURCE" ]; then
+    echo -e "${RED}Error: $RULES_SOURCE does not exist.${NC}"
+    echo "Install this repository there first, for example:"
+    echo "  git clone <repo-url> $RULES_SOURCE"
+    echo "Or symlink an existing clone: ln -s /path/to/superpowers-cursor-rules $RULES_SOURCE"
+    exit 1
+fi
+
 echo -e "${YELLOW}🦸 Enabling Superpowers for Cursor...${NC}"
 
 # Check if we're in a project directory

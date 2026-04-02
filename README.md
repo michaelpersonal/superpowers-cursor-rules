@@ -4,13 +4,33 @@ Comprehensive development workflow skills for Cursor AI agents. These rules help
 
 ## Quick Setup
 
-Run the setup script to symlink these rules to your global Cursor rules directory:
+The setup script expects the shared rules to live at **`~/.cursor-rules`**. It then links the **current project's** `.cursor/rules` to that directory.
+
+### 1. Install the rules once
+
+Put this repository at `~/.cursor-rules`, for example:
 
 ```bash
-./enable-superpowers.sh
+git clone https://github.com/michaelpersonal/superpowers-cursor-rules.git ~/.cursor-rules
 ```
 
-This creates a symlink from `~/.cursor-rules` to this repository, making the rules available in all your Cursor projects.
+If you already cloned elsewhere, point `~/.cursor-rules` at it (symlink or move):
+
+```bash
+ln -s /path/to/superpowers-cursor-rules ~/.cursor-rules
+```
+
+### 2. Enable in each Cursor project
+
+From a **project root** (where you want `.cursor/rules`):
+
+```bash
+~/.cursor-rules/enable-superpowers.sh
+```
+
+This creates **`./.cursor/rules` -> `~/.cursor-rules`** so Cursor loads the shared rules in that project.
+
+If your only clone **is** `~/.cursor-rules`, you can run `./enable-superpowers.sh` from that directory to wire up rules for the clone itself (optional).
 
 ## Available Skills
 
@@ -20,13 +40,15 @@ This creates a symlink from `~/.cursor-rules` to this repository, making the rul
 | **superpowers-writing-plans** | Creating detailed implementation plans |
 | **superpowers-executing-plans** | Following a written plan step-by-step |
 | **superpowers-subagent-driven-development** | Executing plans with fresh subagents per task |
-| **superpowers-test-driven-development** | Writing any code (RED → GREEN → REFACTOR) |
+| **superpowers-test-driven-development** | Writing any code (RED -> GREEN -> REFACTOR) |
 | **superpowers-systematic-debugging** | Fixing bugs, investigating failures |
 | **superpowers-verification-before-completion** | Before claiming work is done |
 | **superpowers-requesting-code-review** | Asking for feedback on your work |
 | **superpowers-receiving-code-review** | Responding to review comments |
 | **superpowers-using-git-worktrees** | Isolating feature work |
 | **superpowers-finishing-a-development-branch** | Completing and merging work |
+| **superpowers-project-retrospective** | End of project: "How I Built This" retrospective |
+| **superpowers-design-mockup** | Visual mockups in Pencil before implementation |
 
 ## Core Principles
 
@@ -51,7 +73,7 @@ Or invoke by context - the AI will use appropriate skills automatically based on
 ```
 .
 ├── README.md
-├── enable-superpowers.sh          # Setup script
+├── enable-superpowers.sh          # Links .cursor/rules -> ~/.cursor-rules
 ├── superpowers.mdc                 # Always-on rules (TDD, verification, debugging)
 ├── superpowers-brainstorming.mdc
 ├── superpowers-writing-plans.mdc
@@ -63,7 +85,9 @@ Or invoke by context - the AI will use appropriate skills automatically based on
 ├── superpowers-requesting-code-review.mdc
 ├── superpowers-receiving-code-review.mdc
 ├── superpowers-using-git-worktrees.mdc
-└── superpowers-finishing-a-development-branch.mdc
+├── superpowers-finishing-a-development-branch.mdc
+├── superpowers-project-retrospective.mdc
+└── superpowers-design-mockup.mdc
 ```
 
 ## Origin
